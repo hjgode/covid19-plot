@@ -15,7 +15,7 @@ echo '#####################################'
 #cd ~/Documents/covid19
 
 # see special quotes being used!
-if test `find time_series_covid19_confirmed_global.csv -mmin +120`
+if [ ! -f ./time_series_covid19_confirmed_global.csv ]
 then
     echo "Getting new updated file"
     #confirmed
@@ -24,8 +24,20 @@ then
 
     echo 'getting new confirmed file...'
     wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+
 else
-    echo "Using previous downloaded file"
+    if test `find time_series_covid19_confirmed_global.csv -mmin +120`
+    then
+        echo "Getting new updated file"
+        #confirmed
+        echo 'deleting old confirmed file...'
+        rm time_series_covid19_confirmed_global.csv
+
+        echo 'getting new confirmed file...'
+        wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+    else
+        echo "Using previous downloaded file"
+    fi
 fi
 
 egrep -c -w "^,$land" time_series_covid19_confirmed_global.csv
@@ -45,7 +57,7 @@ egrep -w "State|^,$land" time_series_covid19_confirmed_global.csv >"time_series_
 echo "transposing table for '"$land"'"
 csvtool transpose "time_series_covid19_work.csv" >"time_series_covid19_work_transposed.csv"
 
-if test `find time_series_covid19_recovered_global.csv -mmin +120`
+if [ ! -f ./time_series_covid19_recovered_global.csv ]
 then
     echo "Getting new updated recovered file"
     #recovered
@@ -55,7 +67,18 @@ then
     echo 'getting new recovered file...'
     wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv
 else
-    echo "Using previous downloaded recovered file"
+    if test `find time_series_covid19_recovered_global.csv -mmin +120`
+    then
+        echo "Getting new updated recovered file"
+        #recovered
+        echo 'deleting old recovered file...'
+        rm time_series_covid19_recovered_global.csv
+
+        echo 'getting new recovered file...'
+        wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv
+    else
+        echo "Using previous downloaded recovered file"
+    fi
 fi
 
 egrep -c -w "^,$land" time_series_covid19_recovered_global.csv
