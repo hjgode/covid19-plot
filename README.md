@@ -17,3 +17,4 @@ or
 
 bash ./_do_plot.sh "United Kingdom"
 
+The data is plotted for confirmed, recovered and delta (new infections compared to previous day). If you subtract the recovered from confirmed, you get a picture of how many actual infections are known.
