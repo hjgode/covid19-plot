@@ -12,7 +12,7 @@ echo '   get current corona data for ...'
 echo '   selected country= '${land}
 echo '#####################################'
 
-cd ~/Documents/covid19
+#cd ~/Documents/covid19
 
 # see special quotes being used!
 if test `find time_series_covid19_confirmed_global.csv -mmin +120`
