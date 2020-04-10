@@ -7,9 +7,17 @@ else
     land=$1
 fi
 
+if [ '$2' != '' ]
+then
+    province=$2
+else
+    province=""
+fi
+
 echo '#####################################'
 echo '   get current corona data for ...'
 echo '   selected country= '${land}
+echo '   selected province= '${province}
 echo '#####################################'
 
 #cd ~/Documents/covid19
@@ -40,8 +48,15 @@ else
     fi
 fi
 
-egrep -c -w "^,$land" time_series_covid19_confirmed_global.csv
-check=$?
+if [ "$province" == "" ]
+then
+    egrep -c -w "^,$land" time_series_covid19_confirmed_global.csv
+    check=$?
+else
+    egrep -c -w "$province,$land" time_series_covid19_confirmed_global.csv
+    check=$?
+fi
+
 if [ "$check" -eq 0 ]
 then
     echo "found data for $land"
@@ -52,9 +67,15 @@ fi
 
 echo "creating time_series_covid19_work.csv..."
 rm "time_series_covid19_work.csv"
-egrep -w "State|^,$land" time_series_covid19_confirmed_global.csv >"time_series_covid19_work.csv"
 
-echo "transposing table for '"$land"'"
+if [ "$province" == "" ]
+then
+    egrep -w "State|^,$land" time_series_covid19_confirmed_global.csv >"time_series_covid19_work.csv"
+else
+    egrep -w "State|$province,$land" time_series_covid19_confirmed_global.csv >"time_series_covid19_work.csv"
+fi
+
+echo "transposing table for '"$province $land"'"
 csvtool transpose "time_series_covid19_work.csv" >"time_series_covid19_work_transposed.csv"
 
 if [ ! -f ./time_series_covid19_recovered_global.csv ]
@@ -81,7 +102,14 @@ else
     fi
 fi
 
-egrep -c -w "^,$land" time_series_covid19_recovered_global.csv
+
+if [ "$province" == "" ]
+then
+    egrep -c -w "^,$land" time_series_covid19_recovered_global.csv
+else
+    egrep -c -w "$province,$land" time_series_covid19_recovered_global.csv
+fi
+
 check=$?
 if [ "$check" -eq 0 ]
 then
@@ -94,7 +122,13 @@ fi
 echo "creating time_series_covid19_work_recovered.csv..."
 rm "time_series_covid19_work_recovered.csv"
 # grep only country with blank Province/State
-egrep -w "State|^,$land" time_series_covid19_recovered_global.csv >"time_series_covid19_work_recovered.csv"
+
+if [ "$province" == "" ]
+then
+    egrep -w "State|^,$land" time_series_covid19_recovered_global.csv >"time_series_covid19_work_recovered.csv"
+else
+    egrep -w "State|$province,$land" time_series_covid19_recovered_global.csv >"time_series_covid19_work_recovered.csv"
+fi
 
 csvtool transpose "time_series_covid19_work_recovered.csv" >"time_series_covid19_work_recovered_transposed.csv"
 
@@ -107,7 +141,13 @@ echo 'Sorting files...'
 cat "time_series_work.csv" |sort -k1,2g -k2,2g --field-separator="/" >"time_series_work_sorted.csv"
 
 echo 'Plotting file...'
-gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land'" plot_covid.gplot
+if [ "$province" == "" ]
+then
+    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land'" plot_covid.gplot
+else
+    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land - $province'" plot_covid.gplot
+fi
+
 
 echo "Show plot file"
 feh -Z -F "$land.png"
