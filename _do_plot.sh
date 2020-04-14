@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# using github repo at https://github.com/CSSEGISandData/COVID-19
+
 if [ '$1' == '' ]
 then
     land=Germany
@@ -140,12 +142,23 @@ csvtool join 1 2 "time_series_covid19_work_transposed.csv" "time_series_covid19_
 echo 'Sorting files...'
 cat "time_series_work.csv" |sort -k1,2g -k2,2g --field-separator="/" >"time_series_work_sorted.csv"
 
+#get modification date scraping the github html page
+tmpdate="$(./_get_date.sh)"
+
+if [ "$tmpdate" != "" ]
+then
+    #convert ISO date time to local time
+    tmpdate="$(date --date $tmpdate +'%d.%m.%Y %H:%M')"
+    #append date time to country name
+    filedate="$tmpdate"
+fi
+
 echo 'Plotting file...'
 if [ "$province" == "" ]
 then
-    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land'" plot_covid.gplot
+    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land $filedate'" plot_covid.gplot
 else
-    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land - $province'" plot_covid.gplot
+    gnuplot -e "filename='time_series_work_sorted.csv';outfile='$land.png';mytitle='$land - $province $filedate'" plot_covid.gplot
 fi
 
 

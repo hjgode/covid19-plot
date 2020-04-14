@@ -60,7 +60,9 @@ second="$(echo ${second} |sed 's/^ //g')"
 echo "country='$first'"
 echo "province='$second'"
 
-if [ '${country}' != '' ]
+if [ '${second}' != '' ]
 then
-   result="$(./_do_plot.sh ${first})"
+   result="$(./_do_plot.sh ${first} ${second})"
+else
+    result="$(./_do_plot.sh ${first})"
 fi

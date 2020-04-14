@@ -23,7 +23,7 @@ Added option to use country and region. Just start the script provoding a countr
 
 ./_do_plot.sh "United Kingdom" "Bermuda"
 
-# find country and region
+# update 2: find country and region
 
 Added another script to select country and region from screen. Just start
 
@@ -32,3 +32,7 @@ _test_select.sh
 You will get a list of countries in the database and then can then select a region. For example select "United Kingdom" and then "Bermuda"
 
 The final plot is then done for this country and region/province.
+
+# update 3: add date / time
+
+added a script to capture last modification date/time from github web page. The date / time is then added to the plot.

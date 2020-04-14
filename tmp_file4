@@ -1,0 +1,49 @@
+      <span itemprop="dateModified"><relative-time datetime="
+2020-04-14T00:57:04Z" class="no-wrap">Apr 13, 2020</relative-time></span>
+      <span itemprop="dateModified"><relative-time datetime="
+2020-04-14T00:57:04Z
+" class="no-wrap">Apr 13, 2020</relative-time></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-02-14T17:03:40Z" class="no-wrap">Feb 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-02-14T17:03:40Z
+" class="no-wrap">Feb 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:57:04Z" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:57:04Z
+" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:54:01Z" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:54:01Z
+" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><a class="js-navigation-open " title="
+time_series_covid19_confirmed_global.csv
+" id="d62f3d90b849b156e529fd17047c1c31-8b377960a10cf6159a84cf61cb14a70bc7d6af97" href="/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv">time_series_covid19_confirmed_global.csv</a></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:52:33Z" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-14T00:52:33Z
+" class="no-wrap">Apr 14, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z" class="no-wrap">Apr 13, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z
+" class="no-wrap">Apr 13, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z" class="no-wrap">Apr 13, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z
+" class="no-wrap">Apr 13, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z" class="no-wrap">Apr 13, 2020</time-ago></span>
+              <span class="css-truncate css-truncate-target"><time-ago datetime="
+2020-04-13T23:55:41Z
+" class="no-wrap">Apr 13, 2020</time-ago></span>
+The files below will no longer be updated. With the release of the new data structure, we are updating our time series tables to reflect these changes. Please reference 
+time_series_covid19_confirmed_global.csv
+ and time_series_covid19_deaths_global.csv for the latest time series data. <br><br>
+<li>Florida data source error (4/13) - US 682,619 -&gt; 580,619 [
+time_series_covid19_confirmed_global.csv
+]</li>

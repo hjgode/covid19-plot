@@ -1,0 +1,12 @@
+--2020-04-14 09:32:15--  https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series
+Resolving github.com (github.com)... 140.82.118.4
+Connecting to github.com (github.com)|140.82.118.4|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘csse_covid_19_time_series’
+
+     0K .......... .......... .......... .......... ..........  968K
+    50K .......... ........                                    1.49M=0.06s
+
+2020-04-14 09:32:16 (1.05 MB/s) - ‘csse_covid_19_time_series’ saved [69924]
+
