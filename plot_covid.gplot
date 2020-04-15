@@ -19,8 +19,13 @@ set y2range [0:10000]
 set y2label 'Delta'
 # set legend position
 set key left bottom
+# line styles
+set style line 1 linetype 2 linewidth 2 pt 3 ps 0.5 lc rgb "red"
+set style line 2 linetype 2 linewidth 2 pt 3 ps 0.5 lc rgb "blue"
+set style line 3 linetype 2 linewidth 2 pt 3 ps 0.5 lc rgb "green"
+set style line 4 linetype 2 linewidth 2 pt 3 ps 0.5 lc rgb "cyan"
 # function to calculate difference to previous value
 delta_v(x) = ( vD = x - old_v, old_v = x, vD)
 old_v = NaN
 # ($2) used to reference value of column 2
-plot filename  using 1:2 with lines title 'confirmed', filename using 1:3 with lines title 'recovered', filename using 1:($2-$3) with lines title 'new infections', filename using 1:(delta_v($2)) with boxes fill title 'Delta' axes x1y2
+plot filename  using 1:2 ls 1 title 'confirmed', filename using 1:3 ls 2 title 'recovered', filename using 1:($2-$3) ls 3 title 'new infections', filename using 1:(delta_v($2)) with boxes fill title 'Delta' axes x1y2
