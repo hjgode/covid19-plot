@@ -116,7 +116,7 @@ csvtool join 1 2,3 "time_series_work.csv" "time_series_work_deaths_transposed.cs
 
 #sort correctly
 echo 'Sorting files...'
-cat "time_series_work_all.csv" |sort -k1,2g -k2,2g --field-separator="/" >"time_series_work_sorted.csv"
+cat "time_series_work_all.csv" |sort -k3n -k2n -k1n --field-separator="/" >"time_series_work_sorted.csv"
 
 #date, confirmed, recovered, deaths
 #4/16/20,137698,77000,4052,
